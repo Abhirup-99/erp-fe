@@ -30,6 +30,6 @@ jobs:
       - name: Npm install
         run: npm install
       - name: Angular Install
-        run : npm install -g @angular/cli
+        run : sudo npm install -g @angular/cli
       - name: Run Lint
         run : ng lint
