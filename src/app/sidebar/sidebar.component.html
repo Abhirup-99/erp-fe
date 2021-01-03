@@ -1,1 +1,15 @@
-<p>sidebar works!</p>
+<button mat-icon-button>
+  <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+</button>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <app-sidelinks></app-sidelinks>
+    <!-- <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a> -->
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 88vh;">
+
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
