@@ -12,16 +12,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatCardModule } from "@angular/material/card";
-import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatCardModule } from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatDividerModule } from "@angular/material/divider";
+import { MatDividerModule } from '@angular/material/divider';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
 
 import { AppRoutingModule } from './app.routing';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidelinksComponent } from './sidebar/sidelinks/sidelinks.component';
 import { LoginComponent } from './routes/login/login.component';
 import { CreateComponent } from './routes/create/create.component';
+import { LeaveComponent } from './routes/leave/leave.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,8 @@ import { CreateComponent } from './routes/create/create.component';
     SidebarComponent,
     SidelinksComponent,
     LoginComponent,
-    CreateComponent
+    CreateComponent,
+    LeaveComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,9 @@ import { CreateComponent } from './routes/create/create.component';
     MatCardModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatDividerModule
+    MatDividerModule,
+    MatDialogModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
