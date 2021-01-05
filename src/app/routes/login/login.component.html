@@ -1,40 +1,40 @@
 <div class="sign-in-page">
-    <div class="sign-up-box">
-        <div class="sign-up-header">
-            <div class="sign-in-box" (click)="isLogin = true;">
-                <p>Sign in</p>
-            </div>
-            <div class="sign-in-box" (click)="isLogin = false;">
-                <p>Sign up</p>
-            </div>
+  <div class="background-cover">
+  </div>
+
+  <div class="sign-up-box">
+    <mat-card>
+      <div class="sign-up-header">
+        <div class="sign-in-box" (click)="isLogin = true;">
+          <p>Sign in</p>
         </div>
-        <div class="sign-in-window">
-            <form
-            id="submitAnnounce"
-            #formValues="ngForm"
-            (ngSubmit)="onSubmit(formValues)"
-            validate
-            >
-            <mat-form-field appearance="fill" class="form-field">
-                <mat-label>Enter your email</mat-label>
-                <input matInput placeholder="pat@example.com" [formControl]="email" 
-                autocomplete="email" required>
-                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-            </mat-form-field>
-            <br>
-            <mat-form-field appearance="fill" class="form-field">
-                <mat-label>Password</mat-label>
-                <input matInput type="password" placeholder="*******" [formControl]="password"
-                autocomplete="new-password" required>
-                <mat-error *ngIf="password.invalid">{{getErrorPasswordMessage()}}</mat-error>
-            </mat-form-field>
-            <div class="form-submit">
-                <button mat-raised-button color="primary" *ngIf="isLogin" [disabled]="email.invalid || password.invalid">
-                    Login</button>
-                <button mat-raised-button color="warn" *ngIf="!isLogin" [disabled]="email.invalid || password.invalid">
-                    Signup</button>    
-            </div>
-            </form>
+        <div class="sign-in-box" (click)="isLogin = false;">
+          <p>Sign up</p>
         </div>
-    </div>
+      </div>
+      <div class="sign-in-window">
+        <form id="submitForm" (ngSubmit)="onSubmit()" [formGroup]="SignUpForm">
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Enter your email</mat-label>
+            <input matInput placeholder="pat@example.com" [formControlName]="'email'" autocomplete="email">
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" placeholder="*******" [formControlName]="'password'"
+              autocomplete="new-password">
+            <mat-error *ngIf="password.invalid">{{getErrorPasswordMessage()}}</mat-error>
+          </mat-form-field>
+          <div class="form-submit">
+            <button mat-raised-button color="primary" *ngIf="isLogin" [disabled]="SignUpForm.invalid">
+              Login</button>
+            <button mat-raised-button color="warn" *ngIf="!isLogin" [disabled]="SignUpForm.invalid">
+              Signup</button>
+          </div>
+        </form>
+      </div>
+
+    </mat-card>
+  </div>
 </div>

@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.minLength(6)]);
   isLogin = true;
-  SignUpForm = new FormControl({
+  SignUpForm = new FormGroup({
     email: this.email,
     password: this.password
   });
@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit {
     }
     return (!this.password.valid) ? 'Should have min 8 length' : 'valid';
   }
-  onSubmit(values: NgForm): void{
-    console.log(this.email.value);
+  onSubmit(): void{
+    console.log(this.SignUpForm);
   }
   ngOnInit(): void {
   }

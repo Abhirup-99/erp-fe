@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 // components
 import { LoginComponent } from './routes/login/login.component';
+import { CreateComponent } from './routes/create/create.component';
 
 const routerOptions: ExtraOptions = {
     scrollPositionRestoration: 'enabled',
@@ -13,7 +14,8 @@ const routerOptions: ExtraOptions = {
 };
 
 const appRoutes: Routes = [
-    {path: 'login', component: LoginComponent}
+    {path: 'login', component: LoginComponent},
+    {path: 'create', component: CreateComponent}
 ];
 @NgModule({
     imports: [
