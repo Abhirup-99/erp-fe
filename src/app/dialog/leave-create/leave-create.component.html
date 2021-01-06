@@ -1,0 +1,35 @@
+<mat-card>
+  <mat-form-field appearance="fill">
+    <mat-label>Select an option</mat-label>
+    <mat-select [(value)]="selected">
+      <mat-option>None</mat-option>
+      <mat-option value="single">Single Day</mat-option>
+      <mat-option value="multi">Multi Day</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <form id="create-leave" *ngIf="selected" [formGroup]="leaveForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label *ngIf="selected==='multi'">Enter your Start Date</mat-label>
+      <mat-label *ngIf="selected==='single'">Enter your Date</mat-label>
+      <input matInput [matDatepicker]="pickerStart" [formControlName]="'startDate'" (focus)="pickerStart.open()">
+      <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+      <mat-datepicker #pickerStart></mat-datepicker>
+      <mat-error *ngIf="startDate.invalid">Field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="form-field" *ngIf="selected==='multi'">
+      <mat-label>Enter your End Date</mat-label>
+      <input matInput [matDatepicker]="pickerEnd" [formControlName]="'endDate'" (focus)="pickerEnd.open()">
+      <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+      <mat-datepicker #pickerEnd></mat-datepicker>
+      <mat-error *ngIf="endDate.invalid">Field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Enter your Reason</mat-label>
+      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+      [formControlName]="'reason'" cdkAutosizeMinRows="3" cdkAutosizeMaxRows="6"></textarea>
+      <mat-error *ngIf="reason.invalid">Field is required</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="leaveForm.invalid">
+        Submit</button>
+  </form>
+</mat-card>

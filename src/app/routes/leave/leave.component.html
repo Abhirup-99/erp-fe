@@ -2,10 +2,11 @@
   <h2>Your Leaves</h2>
   <mat-divider></mat-divider>
   <div class="button-container">
-    <button mat-raised-button color="primary">
+    <button mat-raised-button color="primary" (click)="openDialog()">
       Create</button>
   </div>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <p *ngIf="(dataSource.length===0)">You have applied for any leaves yet.</p>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="!(dataSource.length===0)">
 
     <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef> Date </th>

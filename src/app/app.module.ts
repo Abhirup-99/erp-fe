@@ -18,6 +18,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app.routing';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -25,6 +26,7 @@ import { SidelinksComponent } from './sidebar/sidelinks/sidelinks.component';
 import { LoginComponent } from './routes/login/login.component';
 import { CreateComponent } from './routes/create/create.component';
 import { LeaveComponent } from './routes/leave/leave.component';
+import { LeaveCreateComponent } from './dialog/leave-create/leave-create.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { LeaveComponent } from './routes/leave/leave.component';
     SidelinksComponent,
     LoginComponent,
     CreateComponent,
-    LeaveComponent
+    LeaveComponent,
+    LeaveCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import { LeaveComponent } from './routes/leave/leave.component';
     MatNativeDateModule,
     MatDividerModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
