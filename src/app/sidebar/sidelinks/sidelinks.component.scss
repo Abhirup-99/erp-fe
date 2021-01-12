@@ -1,3 +1,8 @@
 .link-container{
     width: 10vw;
 }
+@media only screen and (max-width:720px){
+    .link-container{
+        width: 40vw;
+    }
+}

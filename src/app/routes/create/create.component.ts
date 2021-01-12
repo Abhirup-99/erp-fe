@@ -9,18 +9,14 @@ export class CreateComponent implements OnInit {
   name: FormControl;
   Dob: FormControl;
   phone: FormControl;
-  email: FormControl;
   personalEmail: FormControl;
-  salary: FormControl;
   createForm: FormGroup;
   constructor() {
     this.name = new FormControl('', [Validators.required]);
     this.Dob = new FormControl('', Validators.required);
     this.phone = new FormControl('',
       [Validators.required, Validators.minLength(10), Validators.maxLength(10)]);
-    this.email = new FormControl('', [Validators.required, Validators.email]);
     this.personalEmail = new FormControl('', [Validators.required, Validators.email]);
-    this.salary = new FormControl('', [Validators.required, Validators.pattern('')]);
     this.createForm = new FormGroup({});
   }
   onSubmit(): void { }
@@ -35,10 +31,8 @@ export class CreateComponent implements OnInit {
     this.createForm = new FormGroup({
       name: this.name,
       dob: this.Dob,
-      email: this.email,
       phone: this.phone,
       personalEmail: this.personalEmail,
-      salary: this.salary
     });
   }
 

@@ -33,6 +33,12 @@
               Signup</button>
           </div>
         </form>
+        <p class="helper-text" *ngIf="isLogin">Don't have an account? 
+          <span style="color:blue" (click)="isLogin = false;">Create now</span>
+        </p>
+        <p class="helper-text" *ngIf="!isLogin">Already have an account? 
+          <span style="color:blue" (click)="isLogin = true;">Click Here</span>
+        </p>
       </div>
 
     </mat-card>

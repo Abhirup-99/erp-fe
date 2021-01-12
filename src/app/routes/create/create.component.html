@@ -13,8 +13,8 @@
             <mat-error *ngIf="name.invalid">Field is required</mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill" class="form-field">
-            <mat-label>Enter your Email</mat-label>
-            <input matInput placeholder="jake@sparrow.com" [formControlName]="'email'">
+            <mat-label>Enter your Personal Email</mat-label>
+            <input matInput placeholder="yahoo@rediff.google" [formControlName]="'personalEmail'">
             <mat-error *ngIf="name.invalid">Field is required</mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill" class="form-field">
@@ -31,17 +31,6 @@
             (keypress)="checkAndReplaceInput($event)">
             <mat-error *ngIf="name.invalid">Field is required</mat-error>
           </mat-form-field>
-          <mat-form-field appearance="fill" class="form-field">
-            <mat-label>Enter your Personal Email</mat-label>
-            <input matInput placeholder="yahoo@rediff.google" [formControlName]="'personalEmail'">
-            <mat-error *ngIf="name.invalid">Field is required</mat-error>
-          </mat-form-field>
-          <mat-form-field appearance="fill" class="form-field">
-            <mat-label>Enter your Salary</mat-label>
-            <input matInput placeholder="xxxxxx" [formControlName]="'salary'"
-            (keypress)="checkAndReplaceInput($event)">
-            <mat-error *ngIf="name.invalid">Field is required</mat-error>
-          </mat-form-field>  
         </div>
         <button mat-raised-button color="primary" [disabled]="createForm.invalid">
           Submit</button>

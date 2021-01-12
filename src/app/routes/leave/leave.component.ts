@@ -15,7 +15,7 @@ export class LeaveComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
   openDialog(): void{
     const dialogRef = this.dialog.open(LeaveCreateComponent, {
-      panelClass: 'mat-custom-dialog1'
+      panelClass: 'mat-custom-dialog'
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');

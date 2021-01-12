@@ -19,6 +19,11 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from "@angular/material/menu";
+
+//font-awesome imports
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app.routing';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -27,6 +32,8 @@ import { LoginComponent } from './routes/login/login.component';
 import { CreateComponent } from './routes/create/create.component';
 import { LeaveComponent } from './routes/leave/leave.component';
 import { LeaveCreateComponent } from './dialog/leave-create/leave-create.component';
+import { ToolbarComponent } from './sidebar/toolbar/toolbar.component';
+import { ProfileDashboardComponent } from './routes/profile-dashboard/profile-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +43,9 @@ import { LeaveCreateComponent } from './dialog/leave-create/leave-create.compone
     LoginComponent,
     CreateComponent,
     LeaveComponent,
-    LeaveCreateComponent
+    LeaveCreateComponent,
+    ToolbarComponent,
+    ProfileDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +65,10 @@ import { LeaveCreateComponent } from './dialog/leave-create/leave-create.compone
     MatDividerModule,
     MatDialogModule,
     MatTableModule,
-    MatSelectModule
+    MatSelectModule,
+    MatToolbarModule,
+    MatMenuModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

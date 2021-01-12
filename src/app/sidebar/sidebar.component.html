@@ -1,14 +1,15 @@
-<button mat-icon-button>
-  <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
-</button>
 <mat-sidenav-container>
   <mat-sidenav #sidenav>
     <app-sidelinks></app-sidelinks>
-    <!-- <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a> -->
   </mat-sidenav>
   <mat-sidenav-content>
-    <div style="height: 88vh;">
-
+    <div style="height: 100vh;">
+      <mat-toolbar color="primary">
+        <button mat-icon-button class="example-icon" aria-label="menu icon">
+          <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+        </button>
+        <app-toolbar class="toolbar-container"></app-toolbar>
+      </mat-toolbar>
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>

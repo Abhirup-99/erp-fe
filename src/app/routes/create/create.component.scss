@@ -1,13 +1,10 @@
 .create-component{
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
     height: 100%;
     width: 100%;
     mat-card{
         width: 80%;
         height: fit-content;
-        margin: 5% 10%;
+        margin: 5% auto;
     }
     .welcome-form{
         width: 100%;
@@ -23,5 +20,13 @@
         grid-template-columns: 45% 45%;
         gap: 2% 10%;
         height: fit-content;
+    }
+}
+@media only screen and (max-width: 720px){
+    .create-component{
+        .form-fields{
+            display: flex;
+            flex-direction: column;
+        }
     }
 }
