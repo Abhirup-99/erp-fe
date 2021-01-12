@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-toolbar',
@@ -8,7 +8,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 })
 export class ToolbarComponent implements OnInit {
   faUser = faUser;
-  constructor() { 
+  constructor() {
   }
 
   ngOnInit(): void {

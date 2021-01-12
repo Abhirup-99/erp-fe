@@ -20,9 +20,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatMenuModule } from "@angular/material/menu";
+import { MatMenuModule } from '@angular/material/menu';
 
-//font-awesome imports
+// font-awesome imports
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app.routing';
