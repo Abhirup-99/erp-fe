@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="sign-in-window">
-        <form id="submitForm" (ngSubmit)="onSubmit()" [formGroup]="SignUpForm">
+        <form id="submitForm" (ngSubmit)="onSubmit()" [formGroup]="signUpForm">
           <mat-form-field appearance="fill" class="form-field">
             <mat-label>Enter your email</mat-label>
             <input matInput placeholder="pat@example.com" [formControlName]="'email'" autocomplete="email">
@@ -27,9 +27,9 @@
             <mat-error *ngIf="password.invalid">{{getErrorPasswordMessage()}}</mat-error>
           </mat-form-field>
           <div class="form-submit">
-            <button mat-raised-button color="primary" *ngIf="isLogin" [disabled]="SignUpForm.invalid">
+            <button mat-raised-button color="primary" *ngIf="isLogin" [disabled]="signUpForm.invalid">
               Login</button>
-            <button mat-raised-button color="warn" *ngIf="!isLogin" [disabled]="SignUpForm.invalid">
+            <button mat-raised-button color="warn" *ngIf="!isLogin" [disabled]="signUpForm.invalid">
               Signup</button>
           </div>
         </form>

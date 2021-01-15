@@ -34,6 +34,7 @@ import { LeaveComponent } from './routes/leave/leave.component';
 import { LeaveCreateComponent } from './dialog/leave-create/leave-create.component';
 import { ToolbarComponent } from './sidebar/toolbar/toolbar.component';
 import { ProfileDashboardComponent } from './routes/profile-dashboard/profile-dashboard.component';
+import { LeaveManageComponent } from './routes/leave-manage/leave-manage.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ProfileDashboardComponent } from './routes/profile-dashboard/profile-da
     LeaveComponent,
     LeaveCreateComponent,
     ToolbarComponent,
-    ProfileDashboardComponent
+    ProfileDashboardComponent,
+    LeaveManageComponent
   ],
   imports: [
     BrowserModule,

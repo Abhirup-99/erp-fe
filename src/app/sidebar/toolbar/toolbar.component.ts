@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -8,9 +9,11 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 })
 export class ToolbarComponent implements OnInit {
   faUser = faUser;
-  constructor() {
+  constructor(private router: Router) {
   }
-
+  routerFunc(): void{
+    this.router.navigate(['profile']);
+  }
   ngOnInit(): void {
   }
 }

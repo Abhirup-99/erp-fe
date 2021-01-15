@@ -1,0 +1,28 @@
+mat-card{
+    width: 90%;
+    margin: 5% auto;
+    height: fit-content;
+    h2,p{
+        text-align: center;
+    }
+    table{
+        width: 90%;
+        margin: 2% 5%;
+    }
+    .total-data th,td{
+        text-align: center;
+        width: calc(100% / 4);
+    }
+    .button-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        width: 90%;
+        margin: 2% 5%;
+        column-gap: 1%;
+        button{
+            margin: 0;
+            text-align: center;
+        }
+    }
+}

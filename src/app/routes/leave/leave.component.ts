@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LeaveElement } from '../../types/leave';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import { LeaveCreateComponent } from '../../dialog/leave-create/leave-create.component';
 
 @Component({
@@ -17,7 +17,7 @@ export class LeaveComponent implements OnInit {
     const dialogRef = this.dialog.open(LeaveCreateComponent, {
       panelClass: 'mat-custom-dialog'
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(_ => {
       console.log('The dialog was closed');
     });
   }

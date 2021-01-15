@@ -7,13 +7,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class CreateComponent implements OnInit {
   name: FormControl;
-  Dob: FormControl;
+  dob: FormControl;
   phone: FormControl;
   personalEmail: FormControl;
   createForm: FormGroup;
   constructor() {
     this.name = new FormControl('', [Validators.required]);
-    this.Dob = new FormControl('', Validators.required);
+    this.dob = new FormControl('', Validators.required);
     this.phone = new FormControl('',
       [Validators.required, Validators.minLength(10), Validators.maxLength(10)]);
     this.personalEmail = new FormControl('', [Validators.required, Validators.email]);
@@ -30,7 +30,7 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
     this.createForm = new FormGroup({
       name: this.name,
-      dob: this.Dob,
+      dob: this.dob,
       phone: this.phone,
       personalEmail: this.personalEmail,
     });

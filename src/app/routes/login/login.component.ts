@@ -8,14 +8,14 @@ import { FormControl, NgForm, Validators, FormGroup } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.minLength(6)]);
   isLogin = true;
-  SignUpForm = new FormGroup({
+  signUpForm = new FormGroup({
     email: this.email,
     password: this.password
   });
+  constructor() { }
   getErrorMessage(): string {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     return (!this.password.valid) ? 'Should have min 8 length' : 'valid';
   }
   onSubmit(): void{
-    console.log(this.SignUpForm);
+    console.log(this.signUpForm);
   }
   ngOnInit(): void {
   }
