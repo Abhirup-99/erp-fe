@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import { LeaveCreateComponent } from '../../dialog/leave-create/leave-create.component';
+import { ProfileEditComponent } from '../../dialog/profile-edit/profile-edit.component';
 
 @Component({
   selector: 'app-profile-dashboard',
@@ -11,7 +11,7 @@ export class ProfileDashboardComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
   openDialog(): void{
-    const dialogRef = this.dialog.open(LeaveCreateComponent, {
+    const dialogRef = this.dialog.open(ProfileEditComponent, {
       panelClass: 'mat-custom-dialog'
     });
     dialogRef.afterClosed().subscribe((_) => {

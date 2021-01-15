@@ -36,6 +36,7 @@ import { ToolbarComponent } from './sidebar/toolbar/toolbar.component';
 import { ProfileDashboardComponent } from './routes/profile-dashboard/profile-dashboard.component';
 import { LeaveManageComponent } from './routes/leave-manage/leave-manage.component';
 import { DetailsViewComponent } from './dialog/details-view/details-view.component';
+import { ProfileEditComponent } from './dialog/profile-edit/profile-edit.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { DetailsViewComponent } from './dialog/details-view/details-view.compone
     ToolbarComponent,
     ProfileDashboardComponent,
     LeaveManageComponent,
-    DetailsViewComponent
+    DetailsViewComponent,
+    ProfileEditComponent
   ],
   imports: [
     BrowserModule,

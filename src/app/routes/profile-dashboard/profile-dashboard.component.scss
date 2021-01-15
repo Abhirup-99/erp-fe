@@ -31,3 +31,7 @@ mat-card{
         }
     }
 }
+::ng-deep.mat-custom-dialog{
+    width: 80%;
+    margin: auto;
+}

@@ -1,0 +1,35 @@
+mat-card{
+    width: 90%;
+    height: fit-content;
+    margin: 5% auto;
+}
+.welcome-form{
+    width: 100%;
+    text-align: center;
+}
+.form-create{
+    width: 100%;
+    text-align: center;
+}
+.form-fields{
+    display: grid;
+    padding: 5% 5% 2% 5%;
+    grid-template-columns: 45% 45%;
+    gap: 2% 10%;
+    height: fit-content;
+}
+.button-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    button{
+        margin: 0 2%;
+    }
+}
+@media only screen and (max-width: 720px){
+    .form-fields{
+        display: flex;
+        flex-direction: column;
+    }
+}
