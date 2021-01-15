@@ -1,0 +1,31 @@
+mat-card{
+    width: 90%;
+    margin: 5% auto;
+    .profile-container{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        border:1px solid rgba(0, 0, 0, 0.12);
+        p{
+            text-align: justify;
+            padding: 2%;
+            margin: 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+        }
+        p:nth-child(2n+1){
+            font-weight: bold;
+        }
+        .even-container{
+            background-color: rgb(242, 242, 242);
+        }
+    }
+    .button-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 2%;
+        button{
+            margin: 0 2%;
+        }
+    }
+}

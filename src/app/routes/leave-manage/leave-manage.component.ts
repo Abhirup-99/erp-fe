@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ManageAllLeaves } from '../../types/manage-all-leave';
 import { ManageLeaves } from '../../types/manage-leave';
 import { faEye, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import { DetailsViewComponent } from '../../dialog/details-view/details-view.component';
 
 @Component({
   selector: 'app-leave-manage',
@@ -12,12 +14,14 @@ export class LeaveManageComponent implements OnInit {
 
   leaveColumn: string[] = ['date', 'reason', 'status', 'action'];
   leaveFilterColumn: string[] = ['date', 'reason', 'action'];
-  dataFilterSource: ManageLeaves[] = [];
-  dataRejectedSource: ManageLeaves[] = [
+  dataFilterSource: ManageAllLeaves[] = [];
+  dataRejectedSource: ManageAllLeaves[] = [
   {
     date: 'string',
     description: 'string',
-    id: 'string'
+    id: 'string',
+    serialNumber: 0,
+    status:'accepted'
   }
 ];
   dataAcceptedSource: ManageLeaves[] = [];
@@ -31,7 +35,7 @@ export class LeaveManageComponent implements OnInit {
   faCheck = faCheck;
   faEye = faEye;
   faTimes = faTimes;
-  constructor() {
+  constructor(private dialog: MatDialog) {
     this.dataSource = this.dataTotalSource;
   }
   toggleView(status: string): void{
@@ -60,7 +64,17 @@ export class LeaveManageComponent implements OnInit {
         break;
     }
   }
-  detailView(id: string): void{}
+  detailView(id: number): void{
+    console.log(id);
+    console.log(this.dataFilterSource[id]);
+    const dialogRef = this.dialog.open(DetailsViewComponent, {
+      panelClass: 'mat-custom-dialog',
+      data:this.dataFilterSource[id]
+    });
+    dialogRef.afterClosed().subscribe((_) => {
+      console.log('The dialog was closed');
+    });
+  }
   accept(id: string): void{}
   reject(id: string): void{}
   ngOnInit(): void {

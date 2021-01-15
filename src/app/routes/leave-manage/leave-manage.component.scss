@@ -26,3 +26,7 @@ mat-card{
         }
     }
 }
+::ng-deep.mat-custom-dialog{
+    width: 60%;
+    margin: auto;
+}
