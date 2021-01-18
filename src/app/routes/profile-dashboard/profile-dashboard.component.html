@@ -2,16 +2,20 @@
     <h1>Your Profile</h1>
     <mat-divider></mat-divider>
     <div class="button-container">
+        <button mat-raised-button color="primary" (click)="openRequestBonus()">
+            Request Bonus</button>
+        <button mat-raised-button color="primary" (click)="openRequestLoan()">
+            Request Loan</button>
         <button mat-raised-button color="primary" (click)="openDialog()">
-          Edit</button>
+            Edit</button>
     </div>    
-    <div class="profile-container">
-        <p>Name</p><p>Abhirup Pal</p>
-        <p class="even-container">Email</p><p class="even-container">yahoo@rediff.com</p>
-        <p>Personal Email</p><p>abhirup@gmail.com</p>
-        <p class="even-container">DOB</p><p class="even-container">dd/mm/yyyy</p>
-        <p>Salary</p><p>10,000</p>
-        <p class="even-container">Team Name</p><p class="even-container">ABC</p>
-        <p>Manager Name</p><p>XYZ</p>    
+    <div class="profile-container" *ngIf="(employeeData$ | async); let employeeData">
+        <p>Name</p><p>{{employeeData.name}}</p>
+        <p class="even-container">Email</p><p class="even-container">{{employeeData.email}}</p>
+        <p>Personal Email</p><p>{{employeeData.personal_email}}</p>
+        <p class="even-container">DOB</p><p class="even-container">{{employeeData.dob}}</p>
+        <p>Salary</p><p>{{employeeData.salary}}</p>
+        <!-- <p class="even-container">Team Name</p><p class="even-container">ABC</p>
+        <p>Manager Name</p><p>XYZ</p>     -->
     </div>
 </mat-card>

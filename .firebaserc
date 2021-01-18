@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "awesome-erp-b3002": {
+      "hosting": {
+        "erp-fe": [
+          "awesome-erp-b3002"
+        ]
+      }
+    }
+  }
+}

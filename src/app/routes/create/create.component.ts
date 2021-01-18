@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BeService } from '../../service/be.service';
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -11,7 +13,7 @@ export class CreateComponent implements OnInit {
   phone: FormControl;
   personalEmail: FormControl;
   createForm: FormGroup;
-  constructor() {
+  constructor(private beService: BeService) {
     this.name = new FormControl('', [Validators.required]);
     this.dob = new FormControl('', Validators.required);
     this.phone = new FormControl('',
@@ -19,7 +21,14 @@ export class CreateComponent implements OnInit {
     this.personalEmail = new FormControl('', [Validators.required, Validators.email]);
     this.createForm = new FormGroup({});
   }
-  onSubmit(): void { }
+  onSubmit(): void {
+    const dateAsString: string = this.createForm.value.dob.toISOString();
+    const payload = {...this.createForm.value,dob:dateAsString.substr(0,10)};
+    this.beService.submitData(payload).subscribe(res=>{
+      console.log(res);
+    });
+  }
+
   checkAndReplaceInput(event: KeyboardEvent): boolean {
     const charCode = Number.parseInt(event.key, 10);
     if (isNaN(charCode)) {

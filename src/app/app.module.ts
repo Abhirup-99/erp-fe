@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { environment } from '../environments/environment';
 
 // material imports
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -21,6 +23,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // font-awesome imports
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -37,6 +40,11 @@ import { ProfileDashboardComponent } from './routes/profile-dashboard/profile-da
 import { LeaveManageComponent } from './routes/leave-manage/leave-manage.component';
 import { DetailsViewComponent } from './dialog/details-view/details-view.component';
 import { ProfileEditComponent } from './dialog/profile-edit/profile-edit.component';
+import { TokenInterceptor } from './interceptors/token.interceptor';
+import { AngularFireModule } from '@angular/fire';
+import { EmployeeDashboardComponent } from './routes/employee-dashboard/employee-dashboard.component';
+import { RequestLoanComponent } from './dialog/request-loan/request-loan.component';
+import { RequestBonusComponent } from './dialog/request-bonus/request-bonus.component';
 
 @NgModule({
   declarations: [
@@ -51,13 +59,18 @@ import { ProfileEditComponent } from './dialog/profile-edit/profile-edit.compone
     ProfileDashboardComponent,
     LeaveManageComponent,
     DetailsViewComponent,
-    ProfileEditComponent
+    ProfileEditComponent,
+    EmployeeDashboardComponent,
+    RequestLoanComponent,
+    RequestBonusComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    HttpClientModule,
     MatListModule,
     BrowserAnimationsModule,
     MatSidenavModule,
@@ -74,9 +87,16 @@ import { ProfileEditComponent } from './dialog/profile-edit/profile-edit.compone
     MatSelectModule,
     MatToolbarModule,
     MatMenuModule,
+    MatSnackBarModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

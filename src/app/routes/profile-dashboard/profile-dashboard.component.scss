@@ -11,6 +11,10 @@ mat-card{
         margin: 2%;
         display: flex;
         flex-direction: row-reverse;
+
+        button{
+            margin: 0 1%;
+        }
     }
     .profile-container{
         width: 100%;
@@ -33,5 +37,9 @@ mat-card{
 }
 ::ng-deep.mat-custom-dialog{
     width: 80%;
+    margin: auto;
+}
+::ng-deep.mat-bonus-dialog{
+    width: 40%;
     margin: auto;
 }

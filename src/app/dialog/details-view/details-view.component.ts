@@ -10,7 +10,6 @@ export class DetailsViewComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: ViewDetails) { }
 
   ngOnInit(): void {
-    console.log(this.data);
   }
 
 }

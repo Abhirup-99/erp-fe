@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ManageAllLeaves } from '../../types/manage-all-leave';
-import { ManageLeaves } from '../../types/manage-leave';
 import { faEye, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
-import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DetailsViewComponent } from '../../dialog/details-view/details-view.component';
+import { BeService } from '../../service/be.service';
 
 @Component({
   selector: 'app-leave-manage',
@@ -12,7 +12,6 @@ import { DetailsViewComponent } from '../../dialog/details-view/details-view.com
 })
 export class LeaveManageComponent implements OnInit {
 
-  leaveColumn: string[] = ['date', 'reason', 'status', 'action'];
   leaveFilterColumn: string[] = ['date', 'reason', 'action'];
   dataFilterSource: ManageAllLeaves[] = [];
   dataRejectedSource: ManageAllLeaves[] = [
@@ -24,32 +23,25 @@ export class LeaveManageComponent implements OnInit {
     status:'accepted'
   }
 ];
-  dataAcceptedSource: ManageLeaves[] = [];
-  dataTotalSource: ManageAllLeaves[] = [];
+  dataAcceptedSource: ManageAllLeaves[] = [];
   dataPendingSource: ManageAllLeaves[] = [];
   dataSource: ManageAllLeaves[] = [];
-  isAll = true;
+  dataTotalSource: any[] = [];
   isPending = false;
   isAccepted = false;
   isRejected = false;
   faCheck = faCheck;
   faEye = faEye;
   faTimes = faTimes;
-  constructor(private dialog: MatDialog) {
-    this.dataSource = this.dataTotalSource;
+  constructor(private dialog: MatDialog,private beService: BeService) {
   }
   toggleView(status: string): void{
-    this.isAll = false;
     this.isPending = false;
     this.isAccepted = false;
     this.isRejected = false;
     switch (status) {
-      case 'all':
-        this.dataSource = this.dataTotalSource;
-        this.isAll = true;
-        break;
       case 'accepted':
-        this.dataFilterSource = this.dataTotalSource;
+        this.dataFilterSource = this.dataAcceptedSource;
         this.isAccepted = true;
         break;
       case 'pending':
@@ -78,6 +70,9 @@ export class LeaveManageComponent implements OnInit {
   accept(id: string): void{}
   reject(id: string): void{}
   ngOnInit(): void {
+    this.beService.getManagerLeaveData('pending').subscribe((res)=>{
+      console.log(res);
+    });
   }
 
 }
