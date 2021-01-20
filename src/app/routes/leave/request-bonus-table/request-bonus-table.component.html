@@ -1,0 +1,43 @@
+<h2>Your Loan Requests</h2>
+<mat-divider></mat-divider>
+<div class="button-container">
+  <button mat-raised-button color="primary" (click)="toggleView('pending')">
+    Pending</button>
+  <button mat-raised-button color="primary" (click)="toggleView('accepted')">
+    Approved</button>
+  <button mat-raised-button color="primary" (click)="toggleView('rejected')">
+    Rejected</button>
+  <button mat-raised-button color="primary" (click)="openRequestLoan()">
+    Request Bonus</button>
+</div>
+
+<p *ngIf="(dataSource.length===0)">You have applied for any leaves yet.</p>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="!(dataSource.length===0)">
+
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="reason">
+    <th mat-header-cell *matHeaderCellDef> Description </th>
+    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let element"> 
+      <button mat-icon-button (click)="detailView(element.id)">
+        <fa-icon [icon]="faEye"></fa-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="leaveColumn"></tr>
+  <tr mat-row *matRowDef="let row; columns: leaveColumn;"></tr>
+</table>

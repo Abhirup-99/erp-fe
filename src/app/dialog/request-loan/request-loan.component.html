@@ -1,1 +1,17 @@
-<p>request-loan works!</p>
+<mat-card>
+  <form id="create-leave" [formGroup]="loanForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Amount</mat-label>
+      <input matInput placeholder="123456789" [formControlName]="'amount'" (keypress)="checkAndReplaceInput($event)">
+      <mat-error *ngIf="amount.invalid">Field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Enter your Reason</mat-label>
+      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" [formControlName]="'reason'"
+        cdkAutosizeMinRows="3" cdkAutosizeMaxRows="6"></textarea>
+      <mat-error *ngIf="reason.invalid">Field is required</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="loanForm.invalid">
+      Submit</button>
+  </form>
+</mat-card>

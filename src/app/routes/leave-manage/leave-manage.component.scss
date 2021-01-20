@@ -1,32 +1,15 @@
-mat-card{
-    width: 90%;
-    margin: 5% auto;
-    height: fit-content;
-    h2,p{
-        text-align: center;
-    }
-    table{
-        width: 90%;
-        margin: 2% 5%;
-    }
-    .total-data th,td{
-        text-align: center;
-        width: calc(100% / 4);
-    }
-    .button-container{
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        width: 90%;
-        margin: 2% 5%;
-        column-gap: 1%;
-        button{
-            margin: 0;
-            text-align: center;
-        }
-    }
+
+::ng-deep.mat-custom-dialog {
+  width: 60%;
+  margin: auto;
 }
-::ng-deep.mat-custom-dialog{
-    width: 60%;
-    margin: auto;
+
+mat-card {
+  width: 90%;
+  margin: 5%;
+  height: fit-content;
+
+  .tab-container {
+    margin: 2%;
+  }
 }

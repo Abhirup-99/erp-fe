@@ -20,9 +20,9 @@ const routerOptions: ExtraOptions = {
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'create', component: CreateComponent},
-    {path: 'leave', component: LeaveComponent},
+    {path: 'request', component: LeaveComponent},
     {path: 'profile', component: ProfileDashboardComponent},
-    {path: 'manage-leave', component: LeaveManageComponent},
+    {path: 'manage-request', component: LeaveManageComponent},
     {path: 'employee-manage', component: EmployeeDashboardComponent}
 ];
 @NgModule({

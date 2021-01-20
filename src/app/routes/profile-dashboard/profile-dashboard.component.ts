@@ -17,14 +17,6 @@ export class ProfileDashboardComponent implements OnInit {
   constructor(private dialog: MatDialog, private beService: BeService) {
     this.employeeData$ = this.beService.getMyInfo();
   }
-  openRequestLoan(): void{
-    const dialogRef = this.dialog.open(RequestLoanComponent, {
-      panelClass: 'mat-custom-dialog'
-    });
-    dialogRef.afterClosed().subscribe((_) => {
-      console.log('The dialog was closed');
-    });
-  }
   openRequestBonus(): void{
     const dialogRef = this.dialog.open(RequestBonusComponent,{
       panelClass:'mat-bonus-dialog'

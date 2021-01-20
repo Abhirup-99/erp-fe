@@ -24,6 +24,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTabsModule } from '@angular/material/tabs';
 
 // font-awesome imports
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -45,6 +46,12 @@ import { AngularFireModule } from '@angular/fire';
 import { EmployeeDashboardComponent } from './routes/employee-dashboard/employee-dashboard.component';
 import { RequestLoanComponent } from './dialog/request-loan/request-loan.component';
 import { RequestBonusComponent } from './dialog/request-bonus/request-bonus.component';
+import { RequestLeaveComponent } from './routes/leave/request-leave/request-leave.component';
+import { RequestLoanTableComponent } from './routes/leave/request-loan/request-loan.component';
+import { RequestBonusTableComponent } from './routes/leave/request-bonus-table/request-bonus-table.component';
+import { LeaveManageTableComponent } from './routes/leave-manage/leave-manage-table/leave-manage-table.component';
+import { LoanManageTableComponent } from './routes/leave-manage/loan-manage-table/loan-manage-table.component';
+import { RaiseManageTableComponent } from './routes/leave-manage/raise-manage-table/raise-manage-table.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +69,13 @@ import { RequestBonusComponent } from './dialog/request-bonus/request-bonus.comp
     ProfileEditComponent,
     EmployeeDashboardComponent,
     RequestLoanComponent,
-    RequestBonusComponent
+    RequestBonusComponent,
+    RequestLeaveComponent,
+    RequestLoanTableComponent,
+    RequestBonusTableComponent,
+    LeaveManageTableComponent,
+    LoanManageTableComponent,
+    RaiseManageTableComponent
   ],
   imports: [
     BrowserModule,
@@ -88,6 +101,7 @@ import { RequestBonusComponent } from './dialog/request-bonus/request-bonus.comp
     MatToolbarModule,
     MatMenuModule,
     MatSnackBarModule,
+    MatTabsModule,
     FontAwesomeModule
   ],
   providers: [

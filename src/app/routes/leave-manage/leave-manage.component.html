@@ -1,40 +1,23 @@
 <mat-card>
-  <h2>Your Leaves</h2>
-  <mat-divider></mat-divider>
-  <div class="button-container">
-    <button mat-raised-button color="primary" (click)="toggleView('pending')">
-      Pending</button>  
-    <button mat-raised-button color="primary" (click)="toggleView('accepted')">
-      Approved</button>
-    <button mat-raised-button color="primary" (click)="toggleView('rejected')">
-      Rejected</button>
-  </div>
-  <!-- <p *ngIf="(true===false)">
-    You don't have any leaves to review.</p> -->
-  <div>
-    <table mat-table [dataSource]="dataFilterSource" class="mat-elevation-z8 total-data">
+  <mat-tab-group color="accent">
+    <mat-tab label="Manage Leaves">
+      <div class="tab-container">
+        <app-leave-manage-table></app-leave-manage-table>
+      </div>
 
-      <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef> Date </th>
-        <td mat-cell *matCellDef="let element"> {{element.date}} </td>
-      </ng-container>
-  
-      <ng-container matColumnDef="reason">
-        <th mat-header-cell *matHeaderCellDef> Description </th>
-        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-      </ng-container>
-  
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef> Action </th>
-        <td mat-cell *matCellDef="let element"> 
-          <button mat-icon-button (click)="detailView(element.serialNumber)">
-            <fa-icon [icon]="faEye"></fa-icon>
-          </button>
-        </td>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="leaveFilterColumn"></tr>
-      <tr mat-row *matRowDef="let row; columns: leaveFilterColumn;"></tr>
-    </table>  
-  </div>
+    </mat-tab>
+
+    <mat-tab label="Loan">
+      <div class="tab-container">
+        <app-loan-manage-table></app-loan-manage-table>
+      </div>
+    </mat-tab>
+    <mat-tab label="Bonus">
+      <div class="tab-container">
+        <app-raise-manage-table></app-raise-manage-table>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
 
 </mat-card>
