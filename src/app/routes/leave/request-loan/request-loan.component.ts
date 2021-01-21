@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { DetailsViewComponent } from 'src/app/dialog/details-view/details-view.component';
 import { Request } from 'src/app/types/request';
 import { RequestLoanComponent } from '../../../dialog/request-loan/request-loan.component';
+import { BeService } from '../../../service/be.service';
 
 @Component({
   selector: 'app-request-loan-table',
@@ -20,14 +22,22 @@ export class RequestLoanTableComponent implements OnInit {
   dataAcceptedSource: Request[] =[];
   dataPendingSource: Request[] =[];
   dataRejectedSource: Request[] =[];
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private beService: BeService,
+              private snackBar: MatSnackBar) { }
 
   openRequestLoan(): void{
     const dialogRef = this.dialog.open(RequestLoanComponent, {
       panelClass: 'mat-custom-dialog'
     });
-    dialogRef.afterClosed().subscribe((_) => {
-      console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe((result) => {
+      this.beService.createEmployeeLoanRaise(result).subscribe((res: any)=>{
+        this.snackBar.open('Redirecting', 'Dismiss', {
+          duration: 100,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+        });
+        console.log('The dialog was closed');
+      });
     });
   }
   detailView(id: number): void{
@@ -41,20 +51,37 @@ export class RequestLoanTableComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
-  toggleView(status: string): void{
+  async getData(type: string): Promise<Request[]> {
+    const data = await this.beService.getEmployeeData('loan', type).toPromise();
+    const refinedData = data.loan.map((el: any,index: number) => {
+      const date = el.created;
+      return {
+        date,
+        status: type,
+        description: el.description,
+        id: el.leave_id,
+        serialNumber: index
+      };
+    });
+    return refinedData;
+  }
+  async toggleView(status: string): Promise<void>{
     this.isPending = false;
     this.isAccepted = false;
     this.isRejected = false;
     switch (status) {
       case 'accepted':
+        this.dataAcceptedSource = await this.getData('accepted');
         this.dataSource = this.dataAcceptedSource;
         this.isAccepted = true;
         break;
       case 'pending':
+        this.dataPendingSource = await this.getData('pending');
         this.dataSource = this.dataPendingSource;
         this.isPending = true;
         break;
       case 'rejected':
+        this.dataRejectedSource = await this.getData('rejected');
         this.dataSource = this.dataRejectedSource;
         this.isRejected = true;
         break;
@@ -63,6 +90,19 @@ export class RequestLoanTableComponent implements OnInit {
     }
   }
   ngOnInit(): void {
+    this.beService.getEmployeeData('loan', 'pending').subscribe((data: any) => {
+      this.dataPendingSource = data.loan.map((el: any, index: number) => {
+        const date = el.created;
+        return {
+          date,
+          status: 'pending',
+          description: el.description,
+          id: el.leave_id,
+          serialNumber: index
+        };
+      });
+      this.dataSource = this.dataPendingSource;
+    });
   }
 
 }

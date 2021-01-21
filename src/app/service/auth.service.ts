@@ -1,15 +1,16 @@
-/* eslint-disable no-underscore-dangle */
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
 import { HttpService } from './http.service';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
-    constructor(private auth: AngularFireAuth,private httpService: HttpService){}
+    constructor(private auth: AngularFireAuth,private httpService: HttpService,
+                private httpClient: HttpClient){}
 
     async login(email: string,password: string): Promise<void>{
         const result = await this.auth.signInWithEmailAndPassword(email,password);
@@ -18,7 +19,7 @@ export class AuthService {
         this.httpService.post(url,{
             idToken:token
         }).subscribe((res)=>{
-            localStorage.setItem('accessToken',res.accessToken);
+            localStorage.setItem('accessToken',res.user_details.access_token);
         },err=>{
             this.logout();
         });
@@ -37,12 +38,14 @@ export class AuthService {
         this.httpService.post(url,{
             idToken:token
         }).subscribe((res)=>{
-            localStorage.setItem('accessToken',res.accessToken);
+            localStorage.setItem('accessToken',res.user_details.access_token);
         },err=>{
             this.logout();
         });
     }
-    logout(): Promise<void>{
-        return this.auth.signOut();
+    async logout(): Promise<void>{
+        const url = `${environment.url}auth/sign-out`;
+        await this.httpClient.get(url).toPromise();
+        await this.auth.signOut();
     }
 }

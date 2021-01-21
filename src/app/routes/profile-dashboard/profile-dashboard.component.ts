@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { ProfileEditComponent } from '../../dialog/profile-edit/profile-edit.component';
 import { RequestBonusComponent } from '../../dialog/request-bonus/request-bonus.component';
-import { RequestLoanComponent } from '../../dialog/request-loan/request-loan.component';
 import { BeService } from '../../service/be.service';
 
 @Component({
@@ -14,26 +14,32 @@ import { BeService } from '../../service/be.service';
 export class ProfileDashboardComponent implements OnInit {
 
   employeeData$: Observable<any>;
-  constructor(private dialog: MatDialog, private beService: BeService) {
+  employeeInfo: any;
+  constructor(private dialog: MatDialog, private beService: BeService,
+              private snackBar: MatSnackBar) {
     this.employeeData$ = this.beService.getMyInfo();
-  }
-  openRequestBonus(): void{
-    const dialogRef = this.dialog.open(RequestBonusComponent,{
-      panelClass:'mat-bonus-dialog'
-    });
-    dialogRef.afterClosed().subscribe((_) => {
-      console.log('The dialog was closed');
-    });
   }
   openDialog(): void{
     const dialogRef = this.dialog.open(ProfileEditComponent, {
+      data: this.employeeInfo.user_data,
       panelClass: 'mat-custom-dialog'
     });
-    dialogRef.afterClosed().subscribe((_) => {
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if(Object.keys(result).length === 0 && result.constructor === Object){
+        return;
+      }
+      this.beService.employeeUpdateData(result).subscribe((_)=>{
+        this.snackBar.open('Succesfully Updated', 'Dismiss', {
+          duration: 100,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+        });
+      },err=>{});
       console.log('The dialog was closed');
     });
   }
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.employeeInfo = await this.employeeData$.toPromise();
   }
 
 }

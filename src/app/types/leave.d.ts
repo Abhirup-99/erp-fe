@@ -1,7 +1,7 @@
 export interface LeaveElement{
     date: string;
-    status: string;
+    status: 'pending' | 'rejected' | 'accepted';
     description: string;
     id: string;
-    serialNumber?: number;
+    serialNumber: number;
 }

@@ -2,17 +2,15 @@
     <h1>Your Profile</h1>
     <mat-divider></mat-divider>
     <div class="button-container">
-        <button mat-raised-button color="primary" (click)="openRequestBonus()">
-            Request Bonus</button>
         <button mat-raised-button color="primary" (click)="openDialog()">
             Edit</button>
     </div>    
     <div class="profile-container" *ngIf="(employeeData$ | async); let employeeData">
-        <p>Name</p><p>{{employeeData.name}}</p>
-        <p class="even-container">Email</p><p class="even-container">{{employeeData.email}}</p>
-        <p>Personal Email</p><p>{{employeeData.personal_email}}</p>
-        <p class="even-container">DOB</p><p class="even-container">{{employeeData.dob}}</p>
-        <p>Salary</p><p>{{employeeData.salary}}</p>
+        <p>Name</p><p>{{employeeData.user_data.name}}</p>
+        <p class="even-container">Email</p><p class="even-container">{{employeeData.user_data.email}}</p>
+        <p>Personal Email</p><p>{{employeeData.user_data.personal_email}}</p>
+        <p class="even-container">DOB</p><p class="even-container">{{employeeData.user_data.dob}}</p>
+        <p>Salary</p><p>{{employeeData.user_data.salary}}</p>
         <!-- <p class="even-container">Team Name</p><p class="even-container">ABC</p>
         <p>Manager Name</p><p>XYZ</p>     -->
     </div>

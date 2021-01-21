@@ -28,8 +28,8 @@ export class LeaveCreateComponent implements OnInit {
     }
     const currentDate = new Date();
     const payLoad = {
-      leaveStart: this.leaveForm.value.startDate,
-      leaveEnd: this.leaveForm.value.endDate,
+      leaveStart: this.leaveForm.value.startDate.substring(0,10),
+      leaveEnd: this.leaveForm.value.endDate.substring(0,10),
       description: this.leaveForm.value.reason,
       leaveCreated: currentDate.toISOString().substring(0,10)
     };
