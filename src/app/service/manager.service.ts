@@ -13,19 +13,19 @@ export class ManagerService {
         return this.httpClient.post(url,data);
     }
 
-    getJuniorEmployees(data: any): Observable<any>{
+    getJuniorEmployees(): Observable<any>{
         const url = `${environment.url}manager/get-jr-employees`;
-        return this.httpClient.post(url,data);
+        return this.httpClient.get(url);
     }
 
-    getJuniorManagers(data: any): Observable<any>{
+    getJuniorManagers(): Observable<any>{
         const url = `${environment.url}manager/get-jr-managers`;
-        return this.httpClient.post(url,data);
+        return this.httpClient.get(url);
     }
 
-    getUnassignedEmployees(data: any): Observable<any>{
+    getUnassignedEmployees(): Observable<any>{
         const url = `${environment.url}manager/get-unassigned-employees`;
-        return this.httpClient.post(url,data);
+        return this.httpClient.get(url);
     }
 
     getEmployeeRequests(requestType: string, markedAs: string): Observable<any>{
@@ -37,4 +37,15 @@ export class ManagerService {
         const url = `${environment.url}manager/mark/`;
         return this.httpClient.post(url,data);
     }
+
+    addManager(employeeId: string,managerId: string): Observable<any>{
+        const url= `${environment.url}manager/${employeeId}/add-manager/${managerId}`;
+        return this.httpClient.get(url);
+    }
+
+    removeManager(employeeId: string, managerId: string): Observable<any>{
+        const url = `${environment.url}manager/${employeeId}/add-manager/${managerId}`;
+        return this.httpClient.get(url);
+    }
+
 }

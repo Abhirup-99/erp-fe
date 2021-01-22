@@ -1,21 +1,24 @@
 <mat-card>
-  <!-- <mat-form-field class="example-form-field">
-    <mat-label>Clearable input</mat-label>
-    <input matInput type="text" [(ngModel)]="searchValue">
-    <button mat-button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" 
-    (click)="searchValue=''">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field> -->
-  <h2>Welcome</h2>
-  <mat-divider></mat-divider>
-  <div class="button-container">
-    <button mat-raised-button color="primary" (click)="toggleView('pending')">
-      All Employees</button>  
-    <button mat-raised-button color="primary" (click)="toggleView('accepted')">
-      All Junior Managers</button>
-    <button mat-raised-button color="primary" (click)="toggleView('rejected')">
-      Unassigned Employees</button>
-  </div>
+  <mat-tab-group color="accent">
+    <mat-tab label="All Employees">
+      <div class="tab-container">
+        <app-all-employees></app-all-employees>
+      </div>
+
+    </mat-tab>
+
+    <mat-tab label="All Junior Managers">
+      <div class="tab-container">
+        <app-all-junior-managers></app-all-junior-managers>
+      </div>
+    </mat-tab>
+    <mat-tab label="Unassigned Employees">
+      <div class="tab-container">
+        <app-unassigned-employees></app-unassigned-employees>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
 
 </mat-card>
+

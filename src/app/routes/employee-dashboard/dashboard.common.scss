@@ -1,0 +1,28 @@
+h2,
+p {
+  text-align: center;
+}
+
+table {
+  width: 90%;
+  margin: 2% 5%;
+}
+
+th,th.mat-header-cell,
+td {
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 90%;
+  margin: 2% 5%;
+  column-gap: 1%;
+
+  button {
+    margin: 0;
+    text-align: center;
+  }
+}

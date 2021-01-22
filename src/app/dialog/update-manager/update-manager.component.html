@@ -1,0 +1,15 @@
+<mat-card>
+  <form id="create-leave" [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+        <mat-label>Manager</mat-label>
+        <mat-select [formControlName]="'manager'">
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let manager of data.managers" [value]="manager.managerId">
+            {{manager.managerName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  <button mat-raised-button color="primary" [disabled]="updateForm.invalid">
+      Submit</button>
+  </form>
+</mat-card>
