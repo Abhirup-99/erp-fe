@@ -30,6 +30,9 @@ export class RequestLoanTableComponent implements OnInit {
       panelClass: 'mat-custom-dialog'
     });
     dialogRef.afterClosed().subscribe((result) => {
+      if(Object.keys(result).length === 0 && result.constructor === Object){
+        return;
+      }
       this.beService.createEmployeeLoanRaise(result).subscribe((res: any)=>{
         this.snackBar.open('Redirecting', 'Dismiss', {
           duration: 100,

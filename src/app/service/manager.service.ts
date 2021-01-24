@@ -48,4 +48,13 @@ export class ManagerService {
         return this.httpClient.get(url);
     }
 
+    addTransaction(employeeId: string,data: any): Observable<any>{
+        const url = `${environment.url}manager/transaction/${employeeId}`;
+        return this.httpClient.post(url,data);
+    }
+
+    filterSearchEmployee(data: any): Observable<any>{
+        const url = `${environment.url}manager/filter`;
+        return this.httpClient.post(url,data);
+    }
 }

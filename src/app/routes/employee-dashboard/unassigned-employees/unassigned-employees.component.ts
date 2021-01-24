@@ -43,6 +43,9 @@ export class UnassignedEmployeesComponent implements OnInit {
       data: {...this.allEmployees[id],managers:this.allManagers}
     });
     dialogRef.afterClosed().subscribe((result) => {
+      if(Object.keys(result).length === 0 && result.constructor === Object){
+        return;
+      }
       this.managerService.addManager(this.allEmployees[id].id,result.manager).subscribe((_)=>{
         this.snackBar.open('Succesfully Updated', 'Dismiss', {
           duration: 100,

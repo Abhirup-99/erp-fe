@@ -31,6 +31,9 @@ export class RequestLeaveComponent implements OnInit {
       panelClass: 'mat-custom-dialog'
     });
     dialogRef.afterClosed().subscribe((result) => {
+      if(Object.keys(result).length === 0 && result.constructor === Object){
+        return;
+      }
       this.beService.submitLeaveApplication(result).subscribe((res)=>{
         this.snackBar.open('Redirecting', 'Dismiss', {
           duration: 100,

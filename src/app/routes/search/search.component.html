@@ -1,47 +1,59 @@
 <mat-card>
+  <div class="button-search" *ngIf="!showForm">
+    <button mat-raised-button color="accent" (click)="showForm=true">
+      Search and Filter Employees
+    </button>
+  </div>
+  <div class="form-create" *ngIf="showForm">
+    <form id="create-form" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+      <p style="text-align: center;">Search/Filter by using or more of the below filters</p>
+      <div class="form-fields">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Search/Filter By Name</mat-label>
+          <input matInput placeholder="" [formControlName]="'name'">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Team Name</mat-label>
+          <mat-select [formControlName]="'teamName'">
+            <mat-option>None</mat-option>
+            <mat-option value="TeamA">Team A</mat-option>
+            <mat-option value="TeamB">Team B</mat-option>
+            <mat-option value="TeamC">Team C</mat-option>
+            <mat-option value="TeamD">Team D</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Role</mat-label>
+          <mat-select [formControlName]="'role'">
+            <mat-option>None</mat-option>
+            <mat-option value="SDE1">SDE 1</mat-option>
+            <mat-option value="SDE2">SDE 2</mat-option>
+            <mat-option value="SDE3">SDE 3</mat-option>
+            <mat-option value="SDE4">SDE 4</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="button-container">
+        <button mat-raised-button color="primary" [disabled]="searchForm.invalid">
+          Search</button>
+        <button mat-raised-button color="warn" (click)="showForm=false">Cancel</button>
+      </div>
+    </form>
+  </div>
+  <table mat-table [dataSource]="allEmployees" *ngIf="!showForm">
 
-    <div class="form-create">
-      <form id="create-form" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-        <div class="form-fields">
-          <mat-form-field appearance="fill" class="form-field">
-            <mat-label>Search/Filter By Name/Email</mat-label>
-            <input matInput placeholder="" [formControlName]="'name'">
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Filter By Name/Email</mat-label>
-            <mat-select [formControlName]="'searchFilter'">
-              <mat-option>None</mat-option>
-              <mat-option value="name">Name</mat-option>
-              <mat-option value="email">Email</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Team Name</mat-label>
-            <mat-select [formControlName]="'teamName'">
-              <mat-option>None</mat-option>
-              <mat-option value="TeamA">Team A</mat-option>
-              <mat-option value="TeamB">Team B</mat-option>
-              <mat-option value="TeamC">Team C</mat-option>
-              <mat-option value="TeamD">Team D</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Role</mat-label>
-            <mat-select [formControlName]="'role'">
-              <mat-option>None</mat-option>
-              <mat-option value="SDE1">SDE 1</mat-option>
-              <mat-option value="SDE2">SDE 2</mat-option>
-              <mat-option value="SDE3">SDE 3</mat-option>
-              <mat-option value="SDE4">SDE 4</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div class="button-container">
-          <button mat-raised-button color="primary" [disabled]="searchForm.invalid">
-            Search</button>
-          <button mat-raised-button color="warn">Cancel</button>
-        </div>
-      </form>
-    </div>
-  </mat-card>
-  
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="dataColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: dataColumns;"></tr>
+  </table>  
+
+</mat-card>

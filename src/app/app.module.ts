@@ -58,6 +58,7 @@ import { UnassignedEmployeesComponent } from './routes/employee-dashboard/unassi
 import { EditEmployeeDataComponent } from './dialog/edit-employee-data/edit-employee-data.component';
 import { UpdateManagerComponent } from './dialog/update-manager/update-manager.component';
 import { SearchComponent } from './routes/search/search.component';
+import { PayrollComponent } from './dialog/payroll/payroll.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { SearchComponent } from './routes/search/search.component';
     UnassignedEmployeesComponent,
     EditEmployeeDataComponent,
     UpdateManagerComponent,
-    SearchComponent
+    SearchComponent,
+    PayrollComponent
   ],
   imports: [
     BrowserModule,

@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EditEmployeeDataComponent } from 'src/app/dialog/edit-employee-data/edit-employee-data.component';
 import { UpdateManagerComponent } from 'src/app/dialog/update-manager/update-manager.component';
-
+import { PayrollComponent } from 'src/app/dialog/payroll/payroll.component';
 
 @Component({
   selector: 'app-all-employees',
@@ -27,7 +27,30 @@ export class AllEmployeesComponent implements OnInit {
       data: this.allEmployees[id]
     });
     dialogRef.afterClosed().subscribe((result) => {
+      if(Object.keys(result).length === 0 && result.constructor === Object){
+        return;
+      }
       this.managerService.updateEmployeeData(result).subscribe((_)=>{
+        this.snackBar.open('Succesfully Updated', 'Dismiss', {
+          duration: 100,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+        });
+      },err=>{});
+    });
+  }
+
+  addPayroll(id: number): void{
+    console.log('clicked');
+    const dialogRef = this.dialog.open(PayrollComponent, {
+      panelClass: 'mat-custom-dialog',
+      data: this.allEmployees[id]
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if(Object.keys(result).length === 0 && result.constructor === Object){
+        return;
+      }
+      this.managerService.addTransaction(this.allEmployees[id].id,result).subscribe((_)=>{
         this.snackBar.open('Succesfully Updated', 'Dismiss', {
           duration: 100,
           horizontalPosition: 'center',
@@ -44,6 +67,9 @@ export class AllEmployeesComponent implements OnInit {
       data: {...this.allEmployees[id],managers:this.allManagers}
     });
     dialogRef.afterClosed().subscribe((result) => {
+      if(Object.keys(result).length === 0 && result.constructor === Object){
+        return;
+      }
       this.managerService.addManager(this.allEmployees[id].id,result.manager).subscribe((_)=>{
         this.snackBar.open('Succesfully Updated', 'Dismiss', {
           duration: 100,

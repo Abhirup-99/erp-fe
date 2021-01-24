@@ -5,13 +5,13 @@
         <button mat-raised-button color="primary" (click)="openDialog()">
             Edit</button>
     </div>    
-    <div class="profile-container" *ngIf="(employeeData$ | async); let employeeData">
-        <p>Name</p><p>{{employeeData.user_data.name}}</p>
-        <p class="even-container">Email</p><p class="even-container">{{employeeData.user_data.email}}</p>
-        <p>Personal Email</p><p>{{employeeData.user_data.personal_email}}</p>
-        <p class="even-container">DOB</p><p class="even-container">{{employeeData.user_data.dob}}</p>
-        <p>Salary</p><p>{{employeeData.user_data.salary}}</p>
+    <div class="profile-container" *ngIf="employeeInfo">
+        <p>Name</p><p>{{employeeInfo.user_data.name}}</p>
+        <p class="even-container">Email</p><p class="even-container">{{employeeInfo.user_data.email}}</p>
+        <p>Personal Email</p><p>{{employeeInfo.user_data.personal_email}}</p>
+        <p class="even-container">DOB</p><p class="even-container">{{employeeInfo.user_data.dob}}</p>
+        <p>Salary</p><p>{{employeeInfo.user_data.salary}}</p>
         <!-- <p class="even-container">Team Name</p><p class="even-container">ABC</p>
-        <p>Manager Name</p><p>XYZ</p>     -->
+        <p>Manager Name</p><p>XYZ</p>     -->        
     </div>
 </mat-card>

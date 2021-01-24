@@ -1,27 +1,45 @@
-mat-card{
-    width: 90%;
-    height: fit-content;
-    margin: 5% auto;
-}
-.form-fields{
-    display: grid;
-    padding: 5% 5% 2% 5%;
-    grid-template-columns: 45% 45%;
-    gap: 2% 10%;
-    height: fit-content;
-}
-.button-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+mat-card {
+  width: 90%;
+  height: fit-content;
+  margin: 5% auto;
 
-    button{
-        margin: 0 2%;
-    }
+  .button-search {
+    text-align: center;
+  }
 }
-@media only screen and (max-width: 720px){
-    .form-fields{
-        display: flex;
-        flex-direction: column;
-    }
+
+table {
+  width: 90%;
+  margin: 2% 5%;
+}
+
+th,
+th.mat-header-cell,
+td {
+  text-align: center;
+}
+
+.form-fields {
+  display: grid;
+  padding: 5% 5% 2% 5%;
+  grid-template-columns: 45% 45%;
+  gap: 2% 10%;
+  height: fit-content;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  button {
+    margin: 0 2%;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .form-fields {
+    display: flex;
+    flex-direction: column;
+  }
 }

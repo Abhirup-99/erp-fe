@@ -1,0 +1,11 @@
+<mat-card>
+  <form id="create-leave" [formGroup]="payrollForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Amount</mat-label>
+      <input matInput placeholder="123456789" [formControlName]="'amount'" (keypress)="checkAndReplaceInput($event)">
+      <mat-error *ngIf="amount.invalid">Field is required</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="payrollForm.invalid">
+      Submit</button>
+  </form>
+</mat-card>
