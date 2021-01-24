@@ -29,9 +29,13 @@ export class SidelinksComponent implements OnInit {
       console.log('test');
       if (!localStorage.getItem('accessToken')) {
         this.isLoggedIn = false;
+      }else{
+        this.isLoggedIn = true;
       }
       if (!(localStorage.getItem('isManger') === 'true')) {
         this.isManager = false;
+      }else{
+        this.isManager = true;
       }
     });
 

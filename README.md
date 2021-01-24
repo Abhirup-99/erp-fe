@@ -1,4 +1,4 @@
-Awesome-ERP Backend([Click Here](https://github.com/awesome-erp/erp-fe))
+Awesome-ERP Frontend([Click Here](https://github.com/awesome-erp/erp-fe))
 ===============================
 <p>
 <img width="30%" style="padding: 5%; display: inline-block" src="/src/assets/aerp-color.svg">

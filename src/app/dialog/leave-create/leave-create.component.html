@@ -11,14 +11,16 @@
     <mat-form-field appearance="fill" class="form-field">
       <mat-label *ngIf="selected==='multi'">Enter your Start Date</mat-label>
       <mat-label *ngIf="selected==='single'">Enter your Date</mat-label>
-      <input matInput [matDatepicker]="pickerStart" [formControlName]="'startDate'" (focus)="pickerStart.open()">
+      <input matInput [matDatepicker]="pickerStart" [formControlName]="'startDate'"
+      [min]="minDate" (focus)="pickerStart.open()">
       <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
       <mat-datepicker #pickerStart></mat-datepicker>
       <mat-error *ngIf="startDate.invalid">Field is required</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill" class="form-field" *ngIf="selected==='multi'">
       <mat-label>Enter your End Date</mat-label>
-      <input matInput [matDatepicker]="pickerEnd" [formControlName]="'endDate'" (focus)="pickerEnd.open()">
+      <input matInput [matDatepicker]="pickerEnd" [formControlName]="'endDate'"
+      [min]="minDate" (focus)="pickerEnd.open()">
       <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
       <mat-datepicker #pickerEnd></mat-datepicker>
       <mat-error *ngIf="endDate.invalid">Field is required</mat-error>

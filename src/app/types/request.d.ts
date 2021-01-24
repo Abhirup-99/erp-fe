@@ -4,4 +4,5 @@ export interface Request{
     description: string;
     id: string;
     serialNumber: number;
+    amount?: string;
 }

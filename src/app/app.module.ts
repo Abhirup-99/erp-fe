@@ -58,6 +58,7 @@ import { EditEmployeeDataComponent } from './dialog/edit-employee-data/edit-empl
 import { UpdateManagerComponent } from './dialog/update-manager/update-manager.component';
 import { SearchComponent } from './routes/search/search.component';
 import { PayrollComponent } from './dialog/payroll/payroll.component';
+import { SidenavService } from './sidebar/sidenav.service';
 
 @NgModule({
   declarations: [
@@ -121,7 +122,8 @@ import { PayrollComponent } from './dialog/payroll/payroll.component';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    }
+    },
+    SidenavService
   ],
   bootstrap: [AppComponent]
 })

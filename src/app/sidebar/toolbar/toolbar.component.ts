@@ -4,6 +4,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { filter } from 'rxjs/operators';
 import { AuthService } from '../../service/auth.service';
+import { SidenavService } from '../sidenav.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -14,7 +15,7 @@ export class ToolbarComponent implements OnInit {
   faUser = faUser;
   isLoggedIn = true;
   constructor(private router: Router,private snackBar: MatSnackBar,
-              private authService: AuthService) {
+              private authService: AuthService, private sidenavService: SidenavService) {
   }
   routerFunc(): void{
     this.router.navigate(['profile']);
@@ -29,6 +30,10 @@ export class ToolbarComponent implements OnInit {
     localStorage.clear();
     this.router.navigate(['login']);
   }
+  closeSidenav(): void{
+    this.sidenavService.toggle();
+  }
+
   ngOnInit(): void {
     this.router.events.pipe(
       filter((event: any) => event instanceof NavigationEnd)

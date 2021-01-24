@@ -20,6 +20,7 @@ export class AuthService {
         const res = await this.httpService.post(url,{idToken:token}).toPromise();
         localStorage.setItem('accessToken',res.user_details.access_token);
         const userData = await this.beService.getMyInfo().toPromise();
+        localStorage.setItem('profile',JSON.stringify(userData.user_data));
         localStorage.setItem('isManger', userData.user_data.is_manager);
     }
     sendEmailVerification(currentUser: firebase.User) {

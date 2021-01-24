@@ -5,6 +5,7 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { DetailsViewComponent } from 'src/app/dialog/details-view/details-view.component';
 import { RequestBonusComponent } from 'src/app/dialog/request-bonus/request-bonus.component';
 import { BeService } from '../../../service/be.service';
+import { Request } from 'src/app/types/request';
 
 @Component({
   selector: 'app-request-bonus-table',
@@ -12,7 +13,7 @@ import { BeService } from '../../../service/be.service';
   styleUrls: ['./request-bonus-table.component.scss', '../leave.common.scss']
 })
 export class RequestBonusTableComponent implements OnInit {
-  leaveColumn: string[] = ['date', 'status', 'action'];
+  leaveColumn: string[] = ['date', 'amount', 'action'];
   dataSource: Request[] = [];
   isPending = false;
   isAccepted = false;
@@ -50,7 +51,8 @@ export class RequestBonusTableComponent implements OnInit {
         status: type,
         description: el.description,
         id: el.leave_id,
-        serialNumber: index
+        serialNumber: index,
+        amount: el.amount
       };
     });
     return refinedData;
@@ -100,7 +102,8 @@ export class RequestBonusTableComponent implements OnInit {
           status: 'pending',
           description: el.description,
           id: el.leave_id,
-          serialNumber: index
+          serialNumber: index,
+          amount: el.amount
         };
       });
       this.dataSource = this.dataPendingSource;

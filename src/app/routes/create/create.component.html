@@ -19,7 +19,7 @@
           </mat-form-field>
           <mat-form-field appearance="fill" class="form-field">
             <mat-label>Enter your DOB</mat-label>
-            <input matInput [matDatepicker]="picker" [formControlName]="'dob'"
+            <input matInput [matDatepicker]="picker" [formControlName]="'dob'" [max]="maxDate"
             (focus)="picker.open()">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>

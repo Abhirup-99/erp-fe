@@ -14,6 +14,7 @@ export class CreateComponent implements OnInit {
   phone: FormControl;
   personalEmail: FormControl;
   createForm: FormGroup;
+  maxDate = new Date(new Date().getFullYear(),(new Date().getMonth()),new Date().getDate());
   constructor(private beService: BeService, private router: Router) {
     this.name = new FormControl('', [Validators.required]);
     this.dob = new FormControl('', Validators.required);

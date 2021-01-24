@@ -8,6 +8,6 @@
     <mat-divider *ngIf="isManager"></mat-divider>
     <a mat-list-item [routerLink]="'/employee-manage'" *ngIf="isManager">Employee Manage</a>
     <mat-divider></mat-divider>
-    <a mat-list-item [routerLink]="'/search'">Search Employee</a>
+    <a mat-list-item [routerLink]="'/search'" *ngIf="isManager">Search Employee</a>
   </mat-nav-list>  
 </div>

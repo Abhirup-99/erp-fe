@@ -87,8 +87,9 @@ export class UnassignedEmployeesComponent implements OnInit {
     });
     this.managerService.getJuniorManagers().subscribe((data: any) => {
       console.log(data);
+      let variableCounter = 0;
       this.allManagers = data.managers.map((el: any, index: number) => {
-        index = index + 1 - 1;
+        variableCounter = index + 1;
         return {
           serialNumber: index,
           id: el.user_id,
@@ -101,6 +102,19 @@ export class UnassignedEmployeesComponent implements OnInit {
           teamId: el.team_id,
           managerId: el.manager_id
         };
+      });
+      const userData = JSON.parse(localStorage.getItem('profile') as string);
+      this.allManagers.push({
+        serialNumber: variableCounter,
+        managerId: userData.manager_id,
+        teamId: userData.team_id,
+        role: userData.role,
+        name: userData.name,
+        managerName: userData.manager_name,
+        isManager: userData.is_manager,
+        salary: userData.salary,
+        email: userData.email,
+        id: userData.user_id
       });
     });
   }

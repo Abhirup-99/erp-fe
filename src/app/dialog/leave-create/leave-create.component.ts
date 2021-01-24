@@ -12,20 +12,23 @@ export class LeaveCreateComponent implements OnInit {
   endDate: FormControl;
   reason: FormControl;
   leaveForm: FormGroup;
+  minDate = new Date(new Date().getFullYear(),(new Date().getMonth()),new Date().getDate()+2);
   constructor(private matDialog: MatDialogRef<LeaveCreateComponent>) {
     this.startDate = new FormControl('', Validators.required);
-    this.endDate = new FormControl('', Validators.required);
+    this.endDate = new FormControl('');
     this.reason = new FormControl('', Validators.required);
     this.leaveForm = new FormGroup({
       startDate: this.startDate,
-      endDate: this.startDate,
+      endDate: this.endDate,
       reason: this.reason
     });
   }
   onSubmit(): void{
-    let endDate = this.leaveForm.value.startDate;
-    if(this.selected === 'multi'){
-      endDate = this.leaveForm.value.endDate;
+    console.log(this.selected);
+    console.log( this.leaveForm.value.endDate);
+    let endDate = this.leaveForm.value.endDate;
+    if(this.selected === 'single' || !endDate){
+      endDate = this.leaveForm.value.startDate;
     }
     const currentDate = new Date();
     console.log(this.leaveForm.value.startDate);

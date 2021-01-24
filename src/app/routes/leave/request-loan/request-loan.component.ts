@@ -13,7 +13,7 @@ import { BeService } from '../../../service/be.service';
   styleUrls: ['./request-loan.component.scss','../leave.common.scss']
 })
 export class RequestLoanTableComponent implements OnInit {
-  leaveColumn: string[] = ['date', 'status', 'reason', 'action'];
+  leaveColumn: string[] = ['date', 'amount', 'reason', 'action'];
   dataSource: Request[] = [];
   isPending = false;
   isAccepted = false;
@@ -63,7 +63,8 @@ export class RequestLoanTableComponent implements OnInit {
         status: type,
         description: el.description,
         id: el.leave_id,
-        serialNumber: index
+        serialNumber: index,
+        amount: el.amount
       };
     });
     return refinedData;
@@ -101,7 +102,8 @@ export class RequestLoanTableComponent implements OnInit {
           status: 'pending',
           description: el.description,
           id: el.leave_id,
-          serialNumber: index
+          serialNumber: index,
+          amount: el.amount
         };
       });
       this.dataSource = this.dataPendingSource;
