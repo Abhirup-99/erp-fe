@@ -23,13 +23,15 @@ export class LeaveCreateComponent implements OnInit {
     });
   }
   onSubmit(): void{
+    let endDate = this.leaveForm.value.startDate;
     if(this.selected === 'multi'){
-      this.endDate = this.startDate;
+      endDate = this.leaveForm.value.endDate;
     }
     const currentDate = new Date();
+    console.log(this.leaveForm.value.startDate);
     const payLoad = {
-      leaveStart: this.leaveForm.value.startDate.substring(0,10),
-      leaveEnd: this.leaveForm.value.endDate.substring(0,10),
+      leaveStart: this.leaveForm.value.startDate.toISOString().substring(0,10),
+      leaveEnd: endDate.toISOString().substring(0,10),
       description: this.leaveForm.value.reason,
       leaveCreated: currentDate.toISOString().substring(0,10)
     };

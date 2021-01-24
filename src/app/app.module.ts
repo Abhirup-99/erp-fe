@@ -57,6 +57,7 @@ import { AllJuniorManagersComponent } from './routes/employee-dashboard/all-juni
 import { UnassignedEmployeesComponent } from './routes/employee-dashboard/unassigned-employees/unassigned-employees.component';
 import { EditEmployeeDataComponent } from './dialog/edit-employee-data/edit-employee-data.component';
 import { UpdateManagerComponent } from './dialog/update-manager/update-manager.component';
+import { SearchComponent } from './routes/search/search.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { UpdateManagerComponent } from './dialog/update-manager/update-manager.c
     AllJuniorManagersComponent,
     UnassignedEmployeesComponent,
     EditEmployeeDataComponent,
-    UpdateManagerComponent
+    UpdateManagerComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

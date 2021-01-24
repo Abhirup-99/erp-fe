@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { ProfileEditComponent } from '../../dialog/profile-edit/profile-edit.component';
-import { RequestBonusComponent } from '../../dialog/request-bonus/request-bonus.component';
 import { BeService } from '../../service/be.service';
 
 @Component({
@@ -40,6 +39,7 @@ export class ProfileDashboardComponent implements OnInit {
   }
   async ngOnInit(): Promise<void> {
     this.employeeInfo = await this.employeeData$.toPromise();
+    localStorage.setItem('isManger', this.employeeInfo.user_data.is_manager);
   }
 
 }

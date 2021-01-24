@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { filter } from 'rxjs/operators';
 import { AuthService } from '../../service/auth.service';
 
 @Component({
@@ -11,6 +12,7 @@ import { AuthService } from '../../service/auth.service';
 })
 export class ToolbarComponent implements OnInit {
   faUser = faUser;
+  isLoggedIn = true;
   constructor(private router: Router,private snackBar: MatSnackBar,
               private authService: AuthService) {
   }
@@ -28,5 +30,13 @@ export class ToolbarComponent implements OnInit {
     this.router.navigate(['login']);
   }
   ngOnInit(): void {
+    this.router.events.pipe(
+      filter((event: any) => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      console.log('test');
+      if (!localStorage.getItem('accessToken')) {
+        this.isLoggedIn = false;
+      }
+    });
   }
 }

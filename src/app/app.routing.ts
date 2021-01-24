@@ -9,6 +9,12 @@ import { LeaveComponent } from './routes/leave/leave.component';
 import { ProfileDashboardComponent } from './routes/profile-dashboard/profile-dashboard.component';
 import { LeaveManageComponent } from './routes/leave-manage/leave-manage.component';
 import { EmployeeDashboardComponent } from './routes/employee-dashboard/employee-dashboard.component';
+import { SearchComponent } from './routes/search/search.component';
+
+//gaurds
+import { AuthGuard } from './auth.guard';
+import { ManagerGuard } from './manager.guard';
+import { AuthLoginGuard } from './auth-login.guard';
 
 const routerOptions: ExtraOptions = {
     scrollPositionRestoration: 'enabled',
@@ -18,12 +24,14 @@ const routerOptions: ExtraOptions = {
 };
 
 const appRoutes: Routes = [
-    {path: 'login', component: LoginComponent},
-    {path: 'create', component: CreateComponent},
-    {path: 'request', component: LeaveComponent},
-    {path: 'profile', component: ProfileDashboardComponent},
-    {path: 'manage-request', component: LeaveManageComponent},
-    {path: 'employee-manage', component: EmployeeDashboardComponent}
+    {path: 'login', component: LoginComponent, canActivate: [AuthLoginGuard]},
+    {path: 'create', component: CreateComponent, canActivate: [AuthGuard]},
+    {path: 'request', component: LeaveComponent, canActivate: [AuthGuard]},
+    {path: 'profile', component: ProfileDashboardComponent, canActivate: [AuthGuard]},
+    {path: 'manage-request', component: LeaveManageComponent, canActivate: [AuthGuard,ManagerGuard]},
+    {path: 'employee-manage', component: EmployeeDashboardComponent, canActivate: [AuthGuard,ManagerGuard]},
+    {path: 'search', component: SearchComponent, canActivate: [AuthGuard]},
+    {path: '', redirectTo:'/profile', pathMatch:'full' },
 ];
 @NgModule({
     imports: [

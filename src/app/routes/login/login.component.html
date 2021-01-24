@@ -5,10 +5,12 @@
   <div class="sign-up-box">
     <mat-card>
       <div class="sign-up-header">
-        <div class="sign-in-box" (click)="isLogin = true;">
+        <div class="sign-in-box" (click)="isLogin = true;" 
+        [ngStyle]="{'background-color': isLogin ? '#c1b5b5' : 'lightgray'}">
           <p>Sign in</p>
         </div>
-        <div class="sign-in-box" (click)="isLogin = false;">
+        <div class="sign-in-box" (click)="isLogin = false;"
+        [ngStyle]="{'background-color': isLogin ? 'lightgray' : '#c1b5b5'}">
           <p>Sign up</p>
         </div>
       </div>

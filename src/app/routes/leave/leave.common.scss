@@ -26,3 +26,10 @@ td {
     text-align: center;
   }
 }
+@media (max-width: 720px){
+  td{
+    button {
+      margin: 1%;
+    }
+  }  
+}

@@ -16,14 +16,8 @@ export class AuthService {
         const result = await this.auth.signInWithEmailAndPassword(email,password);
         const url = `${environment.url}auth/sign-user`;
         const token = await result.user?.getIdToken();
-        this.httpService.post(url,{
-            idToken:token
-        }).subscribe((res)=>{
-            localStorage.setItem('accessToken',res.user_details.access_token);
-        },err=>{
-            this.logout();
-        });
-
+        const res = await this.httpService.post(url,{idToken:token}).toPromise();
+        localStorage.setItem('accessToken',res.user_details.access_token);
     }
     sendEmailVerification(currentUser: firebase.User) {
 
@@ -35,13 +29,8 @@ export class AuthService {
         await this.sendEmailVerification(user);
         const token = await user.getIdToken();
         const url = `${environment.url}auth/sign-user`;
-        this.httpService.post(url,{
-            idToken:token
-        }).subscribe((res)=>{
-            localStorage.setItem('accessToken',res.user_details.access_token);
-        },err=>{
-            this.logout();
-        });
+        const res = await this.httpService.post(url,{idToken:token}).toPromise();
+        localStorage.setItem('accessToken',res.user_details.access_token);
     }
     async logout(): Promise<void>{
         const url = `${environment.url}auth/sign-out`;

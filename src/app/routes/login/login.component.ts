@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, NgForm, Validators, FormGroup } from '@angular/forms';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
   }
   login(email: string,password: string): void{
     this.authService.login(email,password).then((result)=>{
+      this.router.navigate(['profile']);
       this.snackBar.open('Redirecting', 'Dismiss', {
         duration: 100,
         horizontalPosition: 'center',
