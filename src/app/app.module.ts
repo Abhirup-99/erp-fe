@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
 
 // material imports
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -42,7 +43,6 @@ import { LeaveManageComponent } from './routes/leave-manage/leave-manage.compone
 import { DetailsViewComponent } from './dialog/details-view/details-view.component';
 import { ProfileEditComponent } from './dialog/profile-edit/profile-edit.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
-import { AngularFireModule } from '@angular/fire';
 import { EmployeeDashboardComponent } from './routes/employee-dashboard/employee-dashboard.component';
 import { RequestLoanComponent } from './dialog/request-loan/request-loan.component';
 import { RequestBonusComponent } from './dialog/request-bonus/request-bonus.component';
