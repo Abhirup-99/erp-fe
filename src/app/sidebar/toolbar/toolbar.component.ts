@@ -36,6 +36,8 @@ export class ToolbarComponent implements OnInit {
       console.log('test');
       if (!localStorage.getItem('accessToken')) {
         this.isLoggedIn = false;
+      }else{
+        this.isLoggedIn = true;
       }
     });
   }

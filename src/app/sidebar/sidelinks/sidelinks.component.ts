@@ -15,9 +15,13 @@ export class SidelinksComponent implements OnInit {
   ngOnInit(): void {
     if (!localStorage.getItem('accessToken')) {
       this.isLoggedIn = false;
+    }else{
+      this.isLoggedIn = true;
     }
     if (!(localStorage.getItem('isManger') === 'true')) {
       this.isManager = false;
+    }else{
+      this.isManager = true;
     }
     this.router.events.pipe(
       filter((event: any) => event instanceof NavigationEnd)

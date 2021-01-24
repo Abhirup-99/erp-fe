@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  url:'http://localhost:8080/',
+  url: 'https://awesome-erp-backend.herokuapp.com/',
   firebaseConfig:{
     apiKey: 'AIzaSyCFk3ZGYcnjnBEfNwgT0pplU9MeZCb-C-k',
     authDomain: 'awesome-erp-b3002.firebaseapp.com',

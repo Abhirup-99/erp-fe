@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BeService } from '../../service/be.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class CreateComponent implements OnInit {
   phone: FormControl;
   personalEmail: FormControl;
   createForm: FormGroup;
-  constructor(private beService: BeService) {
+  constructor(private beService: BeService, private router: Router) {
     this.name = new FormControl('', [Validators.required]);
     this.dob = new FormControl('', Validators.required);
     this.phone = new FormControl('',
@@ -26,6 +27,7 @@ export class CreateComponent implements OnInit {
     const payload = {...this.createForm.value,dob:dateAsString.substr(0,10)};
     this.beService.submitData(payload).subscribe(res=>{
       console.log(res);
+      this.router.navigate(['profile']);
     });
   }
 

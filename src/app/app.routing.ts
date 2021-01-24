@@ -30,7 +30,7 @@ const appRoutes: Routes = [
     {path: 'profile', component: ProfileDashboardComponent, canActivate: [AuthGuard]},
     {path: 'manage-request', component: LeaveManageComponent, canActivate: [AuthGuard,ManagerGuard]},
     {path: 'employee-manage', component: EmployeeDashboardComponent, canActivate: [AuthGuard,ManagerGuard]},
-    {path: 'search', component: SearchComponent, canActivate: [AuthGuard]},
+    {path: 'search', component: SearchComponent, canActivate: [AuthGuard,ManagerGuard]},
     {path: '', redirectTo:'/profile', pathMatch:'full' },
 ];
 @NgModule({

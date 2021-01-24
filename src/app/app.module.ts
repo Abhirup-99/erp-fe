@@ -53,7 +53,6 @@ import { LeaveManageTableComponent } from './routes/leave-manage/leave-manage-ta
 import { LoanManageTableComponent } from './routes/leave-manage/loan-manage-table/loan-manage-table.component';
 import { RaiseManageTableComponent } from './routes/leave-manage/raise-manage-table/raise-manage-table.component';
 import { AllEmployeesComponent } from './routes/employee-dashboard/all-employees/all-employees.component';
-import { AllJuniorManagersComponent } from './routes/employee-dashboard/all-junior-managers/all-junior-managers.component';
 import { UnassignedEmployeesComponent } from './routes/employee-dashboard/unassigned-employees/unassigned-employees.component';
 import { EditEmployeeDataComponent } from './dialog/edit-employee-data/edit-employee-data.component';
 import { UpdateManagerComponent } from './dialog/update-manager/update-manager.component';
@@ -84,7 +83,6 @@ import { PayrollComponent } from './dialog/payroll/payroll.component';
     LoanManageTableComponent,
     RaiseManageTableComponent,
     AllEmployeesComponent,
-    AllJuniorManagersComponent,
     UnassignedEmployeesComponent,
     EditEmployeeDataComponent,
     UpdateManagerComponent,

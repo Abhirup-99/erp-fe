@@ -1,4 +1,8 @@
 <h2>All Unassigned Employees</h2>
+<div class="button-container">
+  <button mat-raised-button color="primary" (click)="getData()">
+    Update Data</button>
+</div>
 <mat-divider></mat-divider>
 <div>
   <table mat-table [dataSource]="allEmployees" class="mat-elevation-z8 total-data">
@@ -17,7 +21,6 @@
       <th mat-header-cell *matHeaderCellDef> Action </th>
       <td mat-cell *matCellDef="let element"> 
         <button mat-raised-button color="primary" (click)="getEditView(element.serialNumber)">Edit</button>
-        <button mat-raised-button color="warn" (click)="removeManager(element.serialNumber)">Remove Manager</button>
         <button mat-raised-button color="primary" (click)="updateManager(element.serialNumber)">Add Manager</button>
       </td>
     </ng-container>

@@ -67,7 +67,7 @@ export class UnassignedEmployeesComponent implements OnInit {
       },err=>{});
   }
 
-  ngOnInit(): void {
+  getData(): void {
     this.managerService.getUnassignedEmployees().subscribe((data: any) => {
       this.allEmployees = data.employees.map((el: any, index: number) => {
         index =index+1-1;
@@ -103,6 +103,9 @@ export class UnassignedEmployeesComponent implements OnInit {
         };
       });
     });
+  }
+  ngOnInit(): void {
+    this.getData();
   }
 
 }

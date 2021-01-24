@@ -11,90 +11,89 @@ import { PayrollComponent } from 'src/app/dialog/payroll/payroll.component';
 @Component({
   selector: 'app-all-employees',
   templateUrl: './all-employees.component.html',
-  styleUrls: ['./all-employees.component.scss','../dashboard.common.scss']
+  styleUrls: ['./all-employees.component.scss', '../dashboard.common.scss']
 })
 export class AllEmployeesComponent implements OnInit {
   faPencil = faPencilAlt;
   allManagers: EmployeeManage[] = [];
   allEmployees: EmployeeManage[] = [];
   dataColumns = ['name', 'email', 'action'];
-  constructor(private dialog: MatDialog,private managerService: ManagerService,
+  constructor(private dialog: MatDialog, private managerService: ManagerService,
     private snackBar: MatSnackBar) { }
 
-  getEditView(id: number): void{
+  getEditView(id: number): void {
     const dialogRef = this.dialog.open(EditEmployeeDataComponent, {
       panelClass: 'mat-custom-dialog',
       data: this.allEmployees[id]
     });
     dialogRef.afterClosed().subscribe((result) => {
-      if(Object.keys(result).length === 0 && result.constructor === Object){
+      if (Object.keys(result).length === 0 && result.constructor === Object) {
         return;
       }
-      this.managerService.updateEmployeeData(result).subscribe((_)=>{
+      this.managerService.updateEmployeeData(result).subscribe((_) => {
         this.snackBar.open('Succesfully Updated', 'Dismiss', {
           duration: 100,
           horizontalPosition: 'center',
           verticalPosition: 'top',
         });
-      },err=>{});
+      }, err => { });
     });
   }
 
-  addPayroll(id: number): void{
+  addPayroll(id: number): void {
     console.log('clicked');
     const dialogRef = this.dialog.open(PayrollComponent, {
       panelClass: 'mat-custom-dialog',
       data: this.allEmployees[id]
     });
     dialogRef.afterClosed().subscribe((result) => {
-      if(Object.keys(result).length === 0 && result.constructor === Object){
+      if (Object.keys(result).length === 0 && result.constructor === Object) {
         return;
       }
-      this.managerService.addTransaction(this.allEmployees[id].id,result).subscribe((_)=>{
+      this.managerService.addTransaction(this.allEmployees[id].id, result).subscribe((_) => {
         this.snackBar.open('Succesfully Updated', 'Dismiss', {
           duration: 100,
           horizontalPosition: 'center',
           verticalPosition: 'top',
         });
-      },err=>{});
+      }, err => { });
     });
   }
 
-  updateManager(id: number): void{
+  updateManager(id: number): void {
     console.log('clicked');
     const dialogRef = this.dialog.open(UpdateManagerComponent, {
       panelClass: 'mat-custom-dialog',
-      data: {...this.allEmployees[id],managers:this.allManagers}
+      data: { ...this.allEmployees[id], managers: this.allManagers }
     });
     dialogRef.afterClosed().subscribe((result) => {
-      if(Object.keys(result).length === 0 && result.constructor === Object){
+      if (Object.keys(result).length === 0 && result.constructor === Object) {
         return;
       }
-      this.managerService.addManager(this.allEmployees[id].id,result.manager).subscribe((_)=>{
+      this.managerService.addManager(this.allEmployees[id].id, result.manager).subscribe((_) => {
         this.snackBar.open('Succesfully Updated', 'Dismiss', {
           duration: 100,
           horizontalPosition: 'center',
           verticalPosition: 'top',
         });
-      },err=>{});
+      }, err => { });
     });
   }
 
-  removeManager(id: number): void{
-    this.managerService.removeManager(this.allEmployees[id].id,this.allEmployees[id].managerId)
-      .subscribe((_)=>{
+  removeManager(id: number): void {
+    this.managerService.removeManager(this.allEmployees[id].id, this.allEmployees[id].managerId)
+      .subscribe((_) => {
         this.snackBar.open('Succesfully Updated', 'Dismiss', {
           duration: 100,
           horizontalPosition: 'center',
           verticalPosition: 'top',
         });
-      },err=>{});
+      }, err => { });
   }
-
-  ngOnInit(): void {
+  refreshData(): void {
     this.managerService.getJuniorEmployees().subscribe((data: any) => {
       this.allEmployees = data.employees.map((el: any, index: number) => {
-        index =index+1-1;
+        index = index + 1 - 1;
         return {
           serialNumber: index,
           id: el.user_id,
@@ -127,5 +126,8 @@ export class AllEmployeesComponent implements OnInit {
         };
       });
     });
+  }
+  ngOnInit(): void {
+    this.refreshData();
   }
 }

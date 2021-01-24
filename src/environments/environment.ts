@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  url: 'https://127.0.0.1:8888/',
+  // url: 'https://awesome-erp-backend.herokuapp.com/',
+  url: 'https://localhost:8888/',
   firebaseConfig: {
     apiKey: 'AIzaSyCFk3ZGYcnjnBEfNwgT0pplU9MeZCb-C-k',
     authDomain: 'awesome-erp-b3002.firebaseapp.com',
