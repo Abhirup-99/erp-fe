@@ -15,19 +15,40 @@ deployed at: https://awesome-erp.herokuapp.com/
 |-------------|----------------|
 | Frontend    | Angular  |
 | Auth        | Firebase |
-| Lint        | Zulint   |
+| Lint        | Eslint   |
 | Deployment  | Heroku   |
 
 
 
 Route Info
 -----------
-|      Route             | Info                                           |
-|------------------------|------------------------------------------------|
-|   ```login```          | Login/ Signup.                                 |
-|   ```create```         | User Profile Creation.                         |
-|   ```request```        | Creating requests for leaves, bonus, or loans. |
-|   ```profile```        | View User Profile.                             |
-|   ```manage-request``` | Manage requests of employees.                  |
-|   ```employee-manage```| Manage and Assign employees and their payrolls.|
-|   ```search```         | Search for employees in Organization.          |
+|      Route             | Info                                           | Permissions |
+|------------------------|------------------------------------------------|-------------|
+|   ```login```          | Login/ Signup.                                 | All         |
+|   ```create```         | User Profile Creation.                         | All         |
+|   ```request```        | Creating requests for leaves, bonus, or loans. | All         |
+|   ```profile```        | View User Profile.                             | All         |
+|   ```manage-request``` | Manage requests of employees.                  | Manager     |
+|   ```employee-manage```| Manage and Assign employees and their payrolls.| Manager     |
+|   ```search```         | Search for employees in Organization.          | Manager     |
+
+Deployment
+-----------
+- Fork the repository
+- Clone the fork `https://github.com/`GITHUB USERNAME`/erp-fe.git`
+- Run `cd erp-fe`
+- Build the files: `npm run build:prod`
+- Fork https://github.com/awesome-erp/erp-fe-node-serve/tree/master
+- Replace the files in the server with the updated build files from /dist/erp-fe/
+- Deploy to Heroku
+
+Development
+----------
+- Fork the repository
+- Clone the fork `https://github.com/`GITHUB USERNAME`/erp-fe.git`
+- Run `cd erp-fe`
+- Run `npm install`  
+- Build the development server `ng serve`
+Angular allows hot reloading, so any changes in files would trigger automatic reloads.
+This holds true for any changes in the files, but updates to `angular.json`, `tsconfig.json`
+or the environment files won't trigger it.
